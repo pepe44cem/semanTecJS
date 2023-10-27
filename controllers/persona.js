@@ -1,16 +1,26 @@
-const Seq = require('sequelize')
-const sequelize = require('../util/database')
+const Seq = require('sequelize');
+const sequelize = require('../util/database');
 const Persona = sequelize.models.persona;
 
-exports.postAgregarPersona = (req, res) => {
+exports.postAgregarPersona=(req,res)=>{
     console.log(req.body);
     Persona.create(req.body)
-        .then( result => {
-            console.log("Registro exitoso");
+        .then(result=>{
+            console.log("Registro existoso");
             res.send("Registro exitoso");
         })
-        .catch( error => {
+        .catch(error=>{
             console.log(error);
-            res.send("Hubo un problema :(")
+            res.send('Hubo un problema')
         })
-};
+}
+
+exports.getConsultarPersonas = async (ree, res) =>  {
+    try {
+        const result = await Persona.findAll();
+        res.send(result);
+    }catch(error) {
+        console.log(error);
+        res.send('Hubo un problema')
+    }
+}

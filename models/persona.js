@@ -1,14 +1,14 @@
-const Sequielize = require('sequelize');
+const Sequelize=require('sequelize');
 
-const Persona = (sequelize) => {
-    sequelize.define('persona', {
+const Persona = (sequelize)=>{
+    sequelize.define('persona',{
         idPersona:{
-            type: Sequielize.INTEGER,
+            type:Sequelize.INTEGER,
             autoIncrement:true,
             primaryKey:true,
-            allowNull: false
-        }, 
-        nombre: Sequielize.STRING(50)
+            allowNull:false
+        },
+        nombre:Sequelize.STRING(50)
     })
 };
-module.exports = Persona
+module.exports = Persona;
